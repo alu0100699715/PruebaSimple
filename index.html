@@ -4,13 +4,12 @@
 <script>
     
     var recognizer = new webkitSpeechRecognition();
-    recognition.lang = "es-ES";
+    recognizer.lang = "es-ES";
     
     recognizer.continuous = true;
     
     recognizer.onresult = function(event) {
-	transcription.textContent = '';
-        for (var i = event.resultIndex; i < event.results.length; i++) {
+	for (var i = event.resultIndex; i < event.results.length; i++) {
 	  var total="";
 	  if (event.results[i].isFinal) {
 	    total += event.results[i][0].transcript + ' (Confidence: ' + event.results[i][0].confidence + ')';
