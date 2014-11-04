@@ -3,11 +3,7 @@
 <title>Ejemplo Simple</title>
 <script>
     
-    window.SpeechRecognition = window.SpeechRecognition       ||
-                                 window.webkitSpeechRecognition ||
-                                 null;  
-
-     var recognizer = new window.SpeechRecognition();
+    var recognizer = new window.webkitSpeechRecognition();
     
     recognizer.continuous = true;
     
