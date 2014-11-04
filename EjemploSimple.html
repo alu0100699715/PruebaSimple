@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Ejemplo Simple</title>
+<script>
+    
+    window.SpeechRecognition = window.SpeechRecognition       ||
+                                 window.webkitSpeechRecognition ||
+                                 null;  
+
+     var recognizer = new window.SpeechRecognition();
+    
+    recognizer.continuous = true;
+    
+    recognizer.onresult = function(event) {
+	transcription.textContent = '';
+        for (var i = event.resultIndex; i < event.results.length; i++) {
+	  var total="";
+	  if (event.results[i].isFinal) {
+	    total += event.results[i][0].transcript + ' (Confidence: ' + event.results[i][0].confidence + ')';
+          } else {
+	    total += event.results[i][0].transcript;
+          }
+        }
+        
+        console.log(total);
+    };
+    
+    recognizer.onerror = function(event) {
+          console.log('Recognition error: ' + event.message + '<br />');
+    };
+    
+    recognizer.start();
+ 
+</script>
