@@ -11,13 +11,11 @@
     recognizer.onresult = function(event) {
     
      if(k!=1){
-	for (var i = event.resultIndex; i < event.results.length; i++) {
+	for (var i = event.resultIndex; i < event.results.length; ++i) {
 	  if (event.results[i].isFinal) {
-	    total += event.results[i][0].transcript + ' (Confidence: ' + event.results[i][0].confidence + ')';
-          } else {
-	    total += event.results[i][0].transcript;
-          }
-        }
+            total = event.results[i][0].transcript;
+	  }
+	}
      }
      
      else{
