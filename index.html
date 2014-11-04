@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <title>Ejemplo Simple</title>
 <script>
-    
+    var total = "";
     var recognizer = new webkitSpeechRecognition();
     recognizer.lang = "es-ES";
     
@@ -10,7 +10,6 @@
     
     recognizer.onresult = function(event) {
 	for (var i = event.resultIndex; i < event.results.length; i++) {
-	  var total="";
 	  if (event.results[i].isFinal) {
 	    total += event.results[i][0].transcript + ' (Confidence: ' + event.results[i][0].confidence + ')';
           } else {
