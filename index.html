@@ -9,6 +9,8 @@
     recognizer.continuous = true;
     
     recognizer.onresult = function(event) {
+    
+     if(k!=1){
 	for (var i = event.resultIndex; i < event.results.length; i++) {
 	  if (event.results[i].isFinal) {
 	    total += event.results[i][0].transcript + ' (Confidence: ' + event.results[i][0].confidence + ')';
@@ -16,6 +18,12 @@
 	    total += event.results[i][0].transcript;
           }
         }
+     }
+     
+     else{
+	recognizer.stop();
+     }
+     
         
         console.log(total);
     };
@@ -24,6 +32,9 @@
           console.log('Recognition error: ' + event.message + '<br />');
     };
     
+    var k =0;
     recognizer.start();
+    
+ 
  
 </script>
